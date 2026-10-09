@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://djopanrbqatv6"]
+
+[ext_resource type="PackedScene" uid="uid://b2iecoxwqoqwv" path="res://sandbox/box.tscn" id="1_vos54"]
+
+[node name="Sandbox" type="Node2D" unique_id=1386543879]
+
+[node name="Box" parent="." unique_id=1986234337 instance=ExtResource("1_vos54")]
+
+[node name="Box2" parent="." unique_id=1870175415 instance=ExtResource("1_vos54")]
+position = Vector2(160, 159)
+speed = 40.0

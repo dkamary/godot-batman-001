@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b2iecoxwqoqwv"]
+
+[ext_resource type="Script" uid="uid://uuih3iafc0cr" path="res://sandbox/box.gd" id="1_xsh0t"]
+
+[node name="Box" type="Node2D" unique_id=1986234337]
+position = Vector2(160, 112)
+script = ExtResource("1_xsh0t")
+speed = 240.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2065895573]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(1, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="." unique_id=42168222]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
