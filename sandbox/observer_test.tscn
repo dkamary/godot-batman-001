@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://drb1efrk5xo7i"]
+
+[ext_resource type="Script" uid="uid://cey5qqiyjg2x4" path="res://sandbox/observer_test.gd" id="1_u5j2h"]
+
+[node name="ObserverTest" type="Node2D" unique_id=24616633]
+script = ExtResource("1_u5j2h")

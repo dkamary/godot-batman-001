@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://c6h5hqgns2ajp"]
+
+[ext_resource type="Script" uid="uid://b4g2x006ct2m0" path="res://sandbox/hit_test.gd" id="1_j8f8d"]
+[ext_resource type="Script" uid="uid://c0qyher2h7ra2" path="res://core/health.gd" id="1_nar4s"]
+[ext_resource type="Script" uid="uid://bkqc7fhtbhayr" path="res://core/hurtbox.gd" id="2_j8f8d"]
+[ext_resource type="Script" uid="uid://d1uclal4k7e8x" path="res://core/hitbox.gd" id="3_kmsyy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhv2j"]
+size = Vector2(40, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jl2fb"]
+size = Vector2(39, 37)
+
+[node name="HitTest" type="Node2D" unique_id=1547650429]
+script = ExtResource("1_j8f8d")
+
+[node name="Target" type="Node2D" parent="." unique_id=373242995]
+position = Vector2(200, 112)
+
+[node name="Health" type="Node" parent="Target" unique_id=327234803]
+script = ExtResource("1_nar4s")
+max_health = 3
+metadata/_custom_type_script = "uid://c0qyher2h7ra2"
+
+[node name="Hurtbox" type="Area2D" parent="Target" unique_id=1311433585 node_paths=PackedStringArray("health")]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("2_j8f8d")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://bkqc7fhtbhayr"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target/Hurtbox" unique_id=576077053]
+shape = SubResource("RectangleShape2D_yhv2j")
+
+[node name="ColorRect" type="ColorRect" parent="Target" unique_id=1122222073]
+offset_left = -21.0
+offset_top = -20.0
+offset_right = 19.0
+offset_bottom = 20.0
+color = Color(1, 0, 0, 1)
+
+[node name="Fist" type="Node2D" parent="." unique_id=685803593]
+position = Vector2(20, 112)
+
+[node name="Hitbox" type="Area2D" parent="Fist" unique_id=2026976569]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("3_kmsyy")
+metadata/_custom_type_script = "uid://d1uclal4k7e8x"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fist/Hitbox" unique_id=1921151896]
+shape = SubResource("RectangleShape2D_jl2fb")
+
+[node name="ColorRect" type="ColorRect" parent="Fist" unique_id=1567783449]
+offset_left = -18.0
+offset_top = -20.0
+offset_right = 22.0
+offset_bottom = 20.0
+color = Color(0, 0, 1, 1)
