@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://crkul6fvvyxne"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhv2j"]
+size = Vector2(320, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jl2fb"]
+size = Vector2(200, 8)
+
+[node name="TestRoom" type="Node2D" unique_id=1412008308]
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1178236791]
+position = Vector2(160, 208)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=814131537]
+shape = SubResource("RectangleShape2D_yhv2j")
+
+[node name="ColorRect" type="ColorRect" parent="Floor" unique_id=30405326]
+offset_left = -160.0
+offset_top = -8.0
+offset_right = 160.0
+offset_bottom = 8.0
+color = Color(0.24719188, 0.2471919, 0.24719188, 1)
+
+[node name="Balcony" type="StaticBody2D" parent="." unique_id=1040741450]
+position = Vector2(200, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Balcony" unique_id=1634306785]
+shape = SubResource("RectangleShape2D_jl2fb")
+one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="Balcony" unique_id=155376441]
+offset_left = -100.0
+offset_top = -4.0
+offset_right = 100.0
+offset_bottom = 4.0
+color = Color(0.2630868, 0.14167395, 0.018325951, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1698611891]
+position = Vector2(160, 112)
