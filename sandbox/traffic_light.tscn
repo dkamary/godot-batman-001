@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c7ydbt4a0bo4r"]
+
+[ext_resource type="Script" uid="uid://sn4evc56hmoo" path="res://sandbox/traffic_light.gd" id="1_tr0lv"]
+[ext_resource type="Script" uid="uid://b2wp2gh748gk4" path="res://core/state_machine.gd" id="1_x5ctg"]
+[ext_resource type="Script" uid="uid://difkntgrv2pvo" path="res://sandbox/light_state.gd" id="2_x5ctg"]
+
+[node name="TrafficLight" type="Node2D" unique_id=398167633]
+script = ExtResource("1_tr0lv")
+
+[node name="Lamp" type="ColorRect" parent="." unique_id=1960518757]
+offset_left = 49.0
+offset_top = 30.0
+offset_right = 89.0
+offset_bottom = 70.0
+
+[node name="StateMachine" type="Node" parent="." unique_id=980685067 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_x5ctg")
+initial_state = NodePath("Green")
+metadata/_custom_type_script = "uid://b2wp2gh748gk4"
+
+[node name="Green" type="Node" parent="StateMachine" unique_id=1022517138]
+script = ExtResource("2_x5ctg")
+
+[node name="Orange" type="Node" parent="StateMachine" unique_id=1698157919]
+script = ExtResource("2_x5ctg")
+color = Color(0.7137255, 0.2901961, 0, 1)
+duration = 0.7
+next = &"Red"
+
+[node name="Red" type="Node" parent="StateMachine" unique_id=1694276610]
+script = ExtResource("2_x5ctg")
+color = Color(1, 0, 0, 1)
+next = &"Green"
