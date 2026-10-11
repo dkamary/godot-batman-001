@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bescsg40ogddi"]
+
+[ext_resource type="Script" uid="uid://bb2h3tg4sx1w2" path="res://sandbox/player_proto.gd" id="1_r6aot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhv2j"]
+size = Vector2(14, 36)
+
+[node name="PlayerProto" type="CharacterBody2D" unique_id=1786135157]
+position = Vector2(0, 200)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_r6aot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=348163119]
+position = Vector2(0, -18)
+shape = SubResource("RectangleShape2D_yhv2j")
+
+[node name="Placeholder" type="ColorRect" parent="." unique_id=2128130465]
+offset_left = -7.0
+offset_top = -36.0
+offset_right = 7.0
+color = Color(0, 0, 1, 1)

@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://crkul6fvvyxne"]
 
+[ext_resource type="PackedScene" uid="uid://bescsg40ogddi" path="res://sandbox/player_proto.tscn" id="1_nx0i0"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhv2j"]
 size = Vector2(320, 16)
 
@@ -37,3 +39,6 @@ color = Color(0.2630868, 0.14167395, 0.018325951, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1698611891]
 position = Vector2(160, 112)
+
+[node name="PlayerProto" parent="." unique_id=1786135157 instance=ExtResource("1_nx0i0")]
+position = Vector2(60, 200)
