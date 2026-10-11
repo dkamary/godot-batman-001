@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://crkul6fvvyxne"]
 
-[ext_resource type="PackedScene" uid="uid://bescsg40ogddi" path="res://sandbox/player_proto.tscn" id="1_nx0i0"]
+[ext_resource type="Script" uid="uid://dvoow2osfnqc" path="res://level/camera_rig.gd" id="1_54nmk"]
+[ext_resource type="PackedScene" uid="uid://bpgjhxe6fbil1" path="res://player/player.tscn" id="1_nx0i0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhv2j"]
-size = Vector2(320, 16)
+size = Vector2(2000, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jl2fb"]
 size = Vector2(200, 8)
@@ -14,12 +15,13 @@ size = Vector2(200, 8)
 position = Vector2(160, 208)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=814131537]
+position = Vector2(840, 0)
 shape = SubResource("RectangleShape2D_yhv2j")
 
 [node name="ColorRect" type="ColorRect" parent="Floor" unique_id=30405326]
 offset_left = -160.0
 offset_top = -8.0
-offset_right = 160.0
+offset_right = 1840.0
 offset_bottom = 8.0
 color = Color(0.24719188, 0.2471919, 0.24719188, 1)
 
@@ -37,8 +39,117 @@ offset_right = 100.0
 offset_bottom = 4.0
 color = Color(0.2630868, 0.14167395, 0.018325951, 1)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1698611891]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1698611891 node_paths=PackedStringArray("target")]
 position = Vector2(160, 112)
+script = ExtResource("1_54nmk")
+target = NodePath("../Player")
 
-[node name="PlayerProto" parent="." unique_id=1786135157 instance=ExtResource("1_nx0i0")]
-position = Vector2(60, 200)
+[node name="Player" parent="." unique_id=1236431463 instance=ExtResource("1_nx0i0")]
+position = Vector2(114, 101)
+jump_velocity = -450.0
+
+[node name="Markers" type="Node" parent="." unique_id=936926320]
+
+[node name="Markers" type="Node2D" parent="Markers" unique_id=1704823144]
+position = Vector2(0, 140)
+
+[node name="ColorRect" type="ColorRect" parent="Markers/Markers" unique_id=1274470712]
+offset_right = 4.0
+offset_bottom = 60.0
+color = Color(0.51047826, 0.05885668, 0.5448629, 1)
+
+[node name="Markers2" type="Node2D" parent="Markers" unique_id=908390202]
+position = Vector2(160, 140)
+
+[node name="ColorRect" type="ColorRect" parent="Markers/Markers2" unique_id=951931114]
+offset_right = 4.0
+offset_bottom = 60.0
+color = Color(0.51047826, 0.05885668, 0.5448629, 1)
+
+[node name="Markers3" type="Node2D" parent="Markers" unique_id=1554099158]
+position = Vector2(320, 140)
+
+[node name="ColorRect" type="ColorRect" parent="Markers/Markers3" unique_id=1205319465]
+offset_right = 4.0
+offset_bottom = 60.0
+color = Color(0.51047826, 0.05885668, 0.5448629, 1)
+
+[node name="Markers4" type="Node2D" parent="Markers" unique_id=887229639]
+position = Vector2(480, 140)
+
+[node name="ColorRect" type="ColorRect" parent="Markers/Markers4" unique_id=1999201374]
+offset_right = 4.0
+offset_bottom = 60.0
+color = Color(0.51047826, 0.05885668, 0.5448629, 1)
+
+[node name="Markers5" type="Node2D" parent="Markers" unique_id=1687746740]
+position = Vector2(640, 140)
+
+[node name="ColorRect" type="ColorRect" parent="Markers/Markers5" unique_id=533866086]
+offset_right = 4.0
+offset_bottom = 60.0
+color = Color(0.51047826, 0.05885668, 0.5448629, 1)
+
+[node name="Markers6" type="Node2D" parent="Markers" unique_id=1322719]
+position = Vector2(800, 140)
+
+[node name="ColorRect" type="ColorRect" parent="Markers/Markers6" unique_id=571958002]
+offset_right = 4.0
+offset_bottom = 60.0
+color = Color(0.51047826, 0.05885668, 0.5448629, 1)
+
+[node name="Markers7" type="Node2D" parent="Markers" unique_id=210533826]
+position = Vector2(960, 140)
+
+[node name="ColorRect" type="ColorRect" parent="Markers/Markers7" unique_id=1472556250]
+offset_right = 4.0
+offset_bottom = 60.0
+color = Color(0.51047826, 0.05885668, 0.5448629, 1)
+
+[node name="Markers8" type="Node2D" parent="Markers" unique_id=2035074725]
+position = Vector2(1120, 140)
+
+[node name="ColorRect" type="ColorRect" parent="Markers/Markers8" unique_id=1426162610]
+offset_right = 4.0
+offset_bottom = 60.0
+color = Color(0.51047826, 0.05885668, 0.5448629, 1)
+
+[node name="Markers9" type="Node2D" parent="Markers" unique_id=790422872]
+position = Vector2(1280, 140)
+
+[node name="ColorRect" type="ColorRect" parent="Markers/Markers9" unique_id=83392646]
+offset_right = 4.0
+offset_bottom = 60.0
+color = Color(0.51047826, 0.05885668, 0.5448629, 1)
+
+[node name="Markers10" type="Node2D" parent="Markers" unique_id=451567969]
+position = Vector2(1440, 140)
+
+[node name="ColorRect" type="ColorRect" parent="Markers/Markers10" unique_id=1329086044]
+offset_right = 4.0
+offset_bottom = 60.0
+color = Color(0.51047826, 0.05885668, 0.5448629, 1)
+
+[node name="Markers11" type="Node2D" parent="Markers" unique_id=350869952]
+position = Vector2(1600, 140)
+
+[node name="ColorRect" type="ColorRect" parent="Markers/Markers11" unique_id=811857679]
+offset_right = 4.0
+offset_bottom = 60.0
+color = Color(0.51047826, 0.05885668, 0.5448629, 1)
+
+[node name="Markers12" type="Node2D" parent="Markers" unique_id=1850632964]
+position = Vector2(1760, 140)
+
+[node name="ColorRect" type="ColorRect" parent="Markers/Markers12" unique_id=999895241]
+offset_right = 4.0
+offset_bottom = 60.0
+color = Color(0.51047826, 0.05885668, 0.5448629, 1)
+
+[node name="Markers13" type="Node2D" parent="Markers" unique_id=330749694]
+position = Vector2(1920, 140)
+
+[node name="ColorRect" type="ColorRect" parent="Markers/Markers13" unique_id=1997731616]
+offset_right = 4.0
+offset_bottom = 60.0
+color = Color(0.51047826, 0.05885668, 0.5448629, 1)

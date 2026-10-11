@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bpgjhxe6fbil1"]
+
+[ext_resource type="Script" uid="uid://wn8566q3rfqn" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Script" uid="uid://b2wp2gh748gk4" path="res://core/state_machine.gd" id="2_g1dw6"]
+[ext_resource type="Script" uid="uid://cnt4fb00lrj8n" path="res://player/states/idle.gd" id="3_boad6"]
+[ext_resource type="Script" uid="uid://dnibs2shyw631" path="res://player/state_debug.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://d0m7vlpkhuayg" path="res://player/states/run.gd" id="4_rgyib"]
+[ext_resource type="Script" uid="uid://bg37lodjhfknh" path="res://player/states/crouch.gd" id="5_hg6s5"]
+[ext_resource type="Script" uid="uid://p0thmuoeh0rb" path="res://player/states/air.gd" id="6_8t03j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhv2j"]
+size = Vector2(14, 36)
+
+[node name="Player" type="CharacterBody2D" unique_id=1236431463 groups=["player"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_rkbax")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=322897459]
+offset = Vector2(0, -24)
+
+[node name="Placeholder" type="ColorRect" parent="Sprite" unique_id=1653599958]
+offset_left = -7.0
+offset_top = -36.0
+offset_right = 7.0
+color = Color(0.068026036, 0.07464852, 0.5623878, 1)
+
+[node name="Body" type="CollisionShape2D" parent="." unique_id=391781490]
+position = Vector2(0, -18)
+shape = SubResource("RectangleShape2D_yhv2j")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1102574989]
+script = ExtResource("2_g1dw6")
+metadata/_custom_type_script = "uid://b2wp2gh748gk4"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=972329744]
+script = ExtResource("3_boad6")
+
+[node name="Run" type="Node" parent="StateMachine" unique_id=150335499]
+script = ExtResource("4_rgyib")
+
+[node name="Crouch" type="Node" parent="StateMachine" unique_id=1416822169]
+script = ExtResource("5_hg6s5")
+
+[node name="Air" type="Node" parent="StateMachine" unique_id=791571643]
+script = ExtResource("6_8t03j")
+
+[node name="StateDebug" type="Label" parent="." unique_id=1537055344 node_paths=PackedStringArray("player")]
+offset_left = -30.0
+offset_top = -52.0
+offset_right = 30.0
+offset_bottom = -29.0
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_g1dw6")
+player = NodePath("..")
