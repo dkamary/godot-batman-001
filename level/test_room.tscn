@@ -9,6 +9,9 @@ size = Vector2(2000, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jl2fb"]
 size = Vector2(200, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frptc"]
+size = Vector2(200, 4)
+
 [node name="TestRoom" type="Node2D" unique_id=1412008308]
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=1178236791]
@@ -153,3 +156,12 @@ position = Vector2(1920, 140)
 offset_right = 4.0
 offset_bottom = 60.0
 color = Color(0.51047826, 0.05885668, 0.5448629, 1)
+
+[node name="Ledge" type="Area2D" parent="." unique_id=454414007]
+position = Vector2(200, 108)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ledge" unique_id=696249145]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_frptc")

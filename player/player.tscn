@@ -7,9 +7,26 @@
 [ext_resource type="Script" uid="uid://d0m7vlpkhuayg" path="res://player/states/run.gd" id="4_rgyib"]
 [ext_resource type="Script" uid="uid://bg37lodjhfknh" path="res://player/states/crouch.gd" id="5_hg6s5"]
 [ext_resource type="Script" uid="uid://p0thmuoeh0rb" path="res://player/states/air.gd" id="6_8t03j"]
+[ext_resource type="Script" uid="uid://b7546wdwptlad" path="res://player/states/melee.gd" id="7_ebec5"]
+[ext_resource type="Script" uid="uid://c0qyher2h7ra2" path="res://core/health.gd" id="8_hg6s5"]
+[ext_resource type="Script" uid="uid://clb2fyhwpobvt" path="res://player/states/hang.gd" id="8_yllr7"]
+[ext_resource type="Script" uid="uid://bkqc7fhtbhayr" path="res://core/hurtbox.gd" id="9_8t03j"]
+[ext_resource type="Script" uid="uid://d1uclal4k7e8x" path="res://core/hitbox.gd" id="10_8t03j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhv2j"]
 size = Vector2(14, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jl2fb"]
+size = Vector2(12, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frptc"]
+size = Vector2(22, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtpsh"]
+size = Vector2(26, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0jwg"]
+size = Vector2(10, 4)
 
 [node name="Player" type="CharacterBody2D" unique_id=1236431463 groups=["player"]]
 collision_layer = 4
@@ -45,6 +62,20 @@ script = ExtResource("5_hg6s5")
 [node name="Air" type="Node" parent="StateMachine" unique_id=791571643]
 script = ExtResource("6_8t03j")
 
+[node name="Melee" type="Node" parent="StateMachine" unique_id=922540861]
+script = ExtResource("7_ebec5")
+
+[node name="Hang" type="Node" parent="StateMachine" unique_id=1610240490]
+script = ExtResource("8_yllr7")
+
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=1061099913]
+
+[node name="Grabbed" type="Node" parent="StateMachine" unique_id=1586245774]
+
+[node name="Dead" type="Node" parent="StateMachine" unique_id=1892991048]
+
+[node name="Victory" type="Node" parent="StateMachine" unique_id=2136003835]
+
 [node name="StateDebug" type="Label" parent="." unique_id=1537055344 node_paths=PackedStringArray("player")]
 offset_left = -30.0
 offset_top = -52.0
@@ -55,3 +86,45 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_g1dw6")
 player = NodePath("..")
+
+[node name="Health" type="Node" parent="." unique_id=1660148996]
+script = ExtResource("8_hg6s5")
+metadata/_custom_type_script = "uid://c0qyher2h7ra2"
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=757831790]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("9_8t03j")
+metadata/_custom_type_script = "uid://bkqc7fhtbhayr"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=695586609]
+position = Vector2(0, -18)
+shape = SubResource("RectangleShape2D_jl2fb")
+
+[node name="MeleeHitbox" type="Area2D" parent="." unique_id=592258618]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("10_8t03j")
+damage = 2
+knockback = Vector2(140, -60)
+metadata/_custom_type_script = "uid://d1uclal4k7e8x"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeHitbox" unique_id=675789244]
+position = Vector2(16, -22)
+shape = SubResource("RectangleShape2D_frptc")
+
+[node name="MeleeSense" type="Area2D" parent="." unique_id=1717420153]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeSense" unique_id=469760988]
+position = Vector2(16, -18)
+shape = SubResource("RectangleShape2D_wtpsh")
+
+[node name="HandProbe" type="Area2D" parent="." unique_id=1897047422]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HandProbe" unique_id=126991244]
+position = Vector2(0, -42)
+shape = SubResource("RectangleShape2D_d0jwg")

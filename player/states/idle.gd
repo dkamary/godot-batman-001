@@ -17,6 +17,9 @@ func physics_update(_delta: float) -> void:
 		p.jump()
 		transition_to(&"Air")
 		return
+	if p.try_attack() == &"melee":
+		transition_to(&"Melee")
+		return
 	if p.read_move_x() != 0.0:
 		transition_to(&"Run")
 		return
