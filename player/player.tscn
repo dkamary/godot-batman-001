@@ -11,7 +11,19 @@
 [ext_resource type="Script" uid="uid://c0qyher2h7ra2" path="res://core/health.gd" id="8_hg6s5"]
 [ext_resource type="Script" uid="uid://clb2fyhwpobvt" path="res://player/states/hang.gd" id="8_yllr7"]
 [ext_resource type="Script" uid="uid://bkqc7fhtbhayr" path="res://core/hurtbox.gd" id="9_8t03j"]
+[ext_resource type="Script" uid="uid://bwo1j2u548mjx" path="res://player/states/hurt.gd" id="9_32hag"]
 [ext_resource type="Script" uid="uid://d1uclal4k7e8x" path="res://core/hitbox.gd" id="10_8t03j"]
+[ext_resource type="Script" uid="uid://hih0h25njx8q" path="res://player/states/grabbed.gd" id="10_tqiix"]
+[ext_resource type="Script" uid="uid://c6y2utggx63ej" path="res://player/states/dead.gd" id="11_e7oew"]
+[ext_resource type="Script" uid="uid://dm2smkbrfv0j4" path="res://player/states/victory.gd" id="12_c35mf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_32hag"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhv2j"]
 size = Vector2(14, 36)
@@ -34,6 +46,8 @@ collision_mask = 3
 script = ExtResource("1_rkbax")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=322897459]
+sprite_frames = SubResource("SpriteFrames_32hag")
+animation = &"idle"
 offset = Vector2(0, -24)
 
 [node name="Placeholder" type="ColorRect" parent="Sprite" unique_id=1653599958]
@@ -69,12 +83,16 @@ script = ExtResource("7_ebec5")
 script = ExtResource("8_yllr7")
 
 [node name="Hurt" type="Node" parent="StateMachine" unique_id=1061099913]
+script = ExtResource("9_32hag")
 
 [node name="Grabbed" type="Node" parent="StateMachine" unique_id=1586245774]
+script = ExtResource("10_tqiix")
 
 [node name="Dead" type="Node" parent="StateMachine" unique_id=1892991048]
+script = ExtResource("11_e7oew")
 
 [node name="Victory" type="Node" parent="StateMachine" unique_id=2136003835]
+script = ExtResource("12_c35mf")
 
 [node name="StateDebug" type="Label" parent="." unique_id=1537055344 node_paths=PackedStringArray("player")]
 offset_left = -30.0
@@ -91,10 +109,11 @@ player = NodePath("..")
 script = ExtResource("8_hg6s5")
 metadata/_custom_type_script = "uid://c0qyher2h7ra2"
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=757831790]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=757831790 node_paths=PackedStringArray("health")]
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("9_8t03j")
+health = NodePath("../Health")
 metadata/_custom_type_script = "uid://bkqc7fhtbhayr"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=695586609]
